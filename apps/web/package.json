@@ -1,0 +1,31 @@
+{
+  "name": "@descent/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:unit": "vitest run"
+  },
+  "dependencies": {
+    "@descent/assets": "workspace:*",
+    "@descent/content": "workspace:*",
+    "@descent/game": "workspace:*",
+    "@descent/shared": "workspace:*",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.180.0",
+    "zustand": "^5.0.8",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.10"
+  }
+}

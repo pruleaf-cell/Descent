@@ -1,0 +1,682 @@
+:root {
+  color-scheme: dark;
+  --bg: #05070b;
+  --bg-2: #09111f;
+  --panel: rgba(11, 16, 27, 0.82);
+  --panel-strong: rgba(14, 22, 37, 0.96);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 122, 24, 0.35);
+  --text: #f4f6fb;
+  --muted: #9aacbe;
+  --accent: #ff7a18;
+  --accent-2: #57d1ff;
+  --good: #6affb3;
+  --alert: #ff4d4d;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+  --radius: 22px;
+  font-family: Bahnschrift, "Segoe UI", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 24, 0.2), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(87, 209, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, #04060a 0%, #09111f 52%, #05070b 100%);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 122, 24, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 0%, rgba(87, 209, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, #03050a 0%, #09111f 44%, #04060a 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.appShell {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.appShell__backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 49%, rgba(255, 255, 255, 0.03) 49% 51%, transparent 51%),
+    linear-gradient(180deg, transparent 0 49%, rgba(255, 255, 255, 0.03) 49% 51%, transparent 51%);
+  background-size: 80px 80px;
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+.shellHeader,
+.commandDeck,
+.modeBanner,
+.pauseOverlay {
+  position: relative;
+  z-index: 1;
+}
+
+.shellHeader {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr auto;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.shellHeader h1,
+.splashCard h2,
+.panel h2 {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shellHeader h1 {
+  font-size: clamp(2rem, 3vw, 3.6rem);
+}
+
+.shellHeader__eyebrow,
+.panel__eyebrow,
+.splashCard__eyebrow,
+.authStrip__label,
+.modeBanner__label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.shellHeader__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.shellHeader__pilot {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.shellHeader__pilotName {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.shellHeader__pilotType {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.menuButton,
+.secondaryButton,
+.primaryButton,
+.modeBanner__chip,
+.toggleRow {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(21, 28, 42, 0.96), rgba(9, 13, 22, 0.92));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.menuButton:hover,
+.secondaryButton:hover,
+.primaryButton:hover,
+.modeBanner__chip:hover,
+.toggleRow:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
+.menuButton {
+  padding: 11px 16px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.menuButton--active {
+  background: linear-gradient(180deg, rgba(255, 122, 24, 0.22), rgba(15, 19, 31, 0.96));
+  border-color: rgba(255, 122, 24, 0.42);
+}
+
+.commandDeck {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.viewportFrame,
+.panel,
+.splashCard,
+.authStrip,
+.modeBanner__inner,
+.pauseOverlay .panel {
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.viewportFrame {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  padding: 18px;
+}
+
+.viewportFrame__topline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.viewportFrame__scene {
+  position: relative;
+  min-height: 560px;
+  border-radius: calc(var(--radius) - 8px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(255, 122, 24, 0.24), transparent 32%),
+    linear-gradient(180deg, rgba(17, 24, 38, 0.98), rgba(4, 6, 11, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.viewportFrame__sceneGlow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 122, 24, 0.18), transparent 24%),
+    radial-gradient(circle at 50% 50%, rgba(87, 209, 255, 0.08), transparent 42%);
+  animation: pulseGlow 7s ease-in-out infinite;
+}
+
+.viewportFrame__cockpit {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.viewportFrame__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 0%, black 44%, transparent 80%);
+  opacity: 0.5;
+}
+
+.viewportFrame__scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  background-size: 100% 4px;
+  mix-blend-mode: screen;
+  opacity: 0.25;
+  animation: scan 6s linear infinite;
+}
+
+.viewportFrame__reticle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 122, 24, 0.45);
+  box-shadow:
+    0 0 0 18px rgba(255, 122, 24, 0.08),
+    inset 0 0 18px rgba(255, 122, 24, 0.1);
+  position: relative;
+}
+
+.viewportFrame__reticle::before,
+.viewportFrame__reticle::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  background: rgba(255, 122, 24, 0.8);
+  transform: translate(-50%, -50%);
+}
+
+.viewportFrame__reticle::before {
+  width: 2px;
+  height: 70px;
+}
+
+.viewportFrame__reticle::after {
+  width: 70px;
+  height: 2px;
+}
+
+.viewportFrame__centerLabel,
+.viewportFrame__subLabel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.viewportFrame__centerLabel {
+  bottom: 82px;
+  font-size: 0.82rem;
+}
+
+.viewportFrame__subLabel {
+  bottom: 56px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.hudOverlay {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hudOverlay__metric {
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(6, 10, 16, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hudOverlay__metric span,
+.dataStat span {
+  display: block;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+}
+
+.hudOverlay__metric strong,
+.dataStat strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.controlLegend {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 240px;
+}
+
+.controlLegend span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(3, 6, 11, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
+.commandDeck__right {
+  display: grid;
+  gap: 16px;
+}
+
+.panel,
+.splashCard,
+.authStrip,
+.modeBanner__inner {
+  padding: 18px;
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.panel__body {
+  display: grid;
+  gap: 14px;
+}
+
+.panelCopy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.objectiveList {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+  color: var(--text);
+}
+
+.statusRow,
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(11, 16, 27, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+}
+
+.chip--good {
+  color: var(--good);
+}
+
+.chip--alert {
+  color: var(--alert);
+}
+
+.statusGrid,
+.profileMetrics,
+.notesList,
+.settingsGrid,
+.volumeBars {
+  display: grid;
+  gap: 10px;
+}
+
+.statusGrid,
+.profileMetrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dataStat {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(8, 12, 19, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.alertBox {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.22);
+  display: grid;
+  gap: 8px;
+}
+
+.alertBox__label {
+  color: var(--alert);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.68rem;
+}
+
+.leaderboardTable {
+  display: grid;
+  gap: 8px;
+}
+
+.leaderboardTable__head,
+.leaderboardTable__row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 0.7fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.leaderboardTable__head {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+}
+
+.leaderboardTable__row {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(8, 12, 19, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.leaderboardTable__pilot {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.profileCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.profileCard__name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.profileCard__type {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
+.settingsGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.toggleRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.toggleRow--on {
+  border-color: rgba(255, 122, 24, 0.34);
+  background: linear-gradient(180deg, rgba(255, 122, 24, 0.16), rgba(9, 13, 22, 0.92));
+}
+
+.authStrip {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.authStrip strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.primaryButton {
+  border-color: rgba(255, 122, 24, 0.44);
+  background: linear-gradient(180deg, rgba(255, 122, 24, 0.22), rgba(17, 21, 32, 0.96));
+}
+
+.secondaryButton {
+  background: linear-gradient(180deg, rgba(16, 22, 35, 0.92), rgba(10, 14, 22, 0.96));
+}
+
+.splashCard {
+  display: grid;
+  gap: 12px;
+}
+
+.splashCard h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+}
+
+.splashCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.modeBanner {
+  position: fixed;
+  inset: auto 24px 24px auto;
+  width: min(460px, calc(100vw - 48px));
+}
+
+.modeBanner__inner {
+  display: grid;
+  gap: 12px;
+}
+
+.modeBanner__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pauseOverlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+}
+
+.pauseOverlay .panel {
+  width: min(640px, calc(100vw - 48px));
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-40%);
+  }
+  to {
+    transform: translateY(40%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .shellHeader,
+  .commandDeck {
+    grid-template-columns: 1fr;
+  }
+
+  .shellHeader__pilot {
+    justify-self: start;
+    align-items: flex-start;
+  }
+
+  .viewportFrame {
+    min-height: 640px;
+  }
+}
+
+@media (max-width: 760px) {
+  .appShell {
+    padding: 14px;
+  }
+
+  .hudOverlay {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .statusGrid,
+  .profileMetrics,
+  .settingsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboardTable__head,
+  .leaderboardTable__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

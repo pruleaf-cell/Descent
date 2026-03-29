@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420">
+  <defs>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101827"/>
+      <stop offset="100%" stop-color="#1b2c42"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="420" rx="28" fill="url(#card)"/>
+  <rect x="26" y="26" width="668" height="368" rx="18" fill="none" stroke="#ff7a18" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="50" y="88" fill="#f4f7fb" font-size="36" font-family="monospace">MISSION BRIEF</text>
+  <text x="50" y="138" fill="#8ea3bf" font-size="20" font-family="monospace">INFILTRATE THE CRIMSON FOUNDRY, ARM THE REACTOR, ESCAPE.</text>
+  <path d="M50 172h620" stroke="#2f445f" stroke-width="2"/>
+  <text x="50" y="222" fill="#67d1ff" font-size="18" font-family="monospace">KEYS: AZURE, CRIMSON</text>
+  <text x="50" y="258" fill="#67d1ff" font-size="18" font-family="monospace">F WEAPON: FLARE</text>
+  <text x="50" y="294" fill="#67d1ff" font-size="18" font-family="monospace">OBJECTIVES: HUB, LOCKS, REACTOR, ESCAPE</text>
+  <text x="50" y="350" fill="#ff7a18" font-size="18" font-family="monospace">RETRO INDUSTRIAL // ORIGINAL-INSPIRED PRESENTATION</text>
+</svg>

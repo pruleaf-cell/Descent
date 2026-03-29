@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260">
+  <rect width="520" height="260" rx="22" fill="#0d1523"/>
+  <path d="M24 34h472v192H24z" fill="none" stroke="#67d1ff" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M24 34h472v192H24z" fill="none" stroke="#ff7a18" stroke-opacity="0.35" stroke-width="8" stroke-linejoin="round"/>
+  <text x="42" y="82" fill="#f4f7fb" font-size="28" font-family="monospace">STATUS PANEL</text>
+  <text x="42" y="124" fill="#8ea3bf" font-size="16" font-family="monospace">SHIELDS / ENERGY / AMMO / FLARES</text>
+  <text x="42" y="160" fill="#67d1ff" font-size="16" font-family="monospace">REACTOR: ARMED</text>
+  <text x="42" y="190" fill="#ff3b30" font-size="16" font-family="monospace">ESCAPE TIMER: ACTIVE</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050914"/>
+      <stop offset="100%" stop-color="#142036"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff7a18" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ff7a18" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff7a18" stop-opacity="0.15"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#8ea3bf" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="220" rx="32" fill="url(#bg)"/>
+  <rect x="0" y="0" width="960" height="220" rx="32" fill="url(#grid)"/>
+  <path d="M52 156 C120 106, 184 88, 250 102 S382 154, 452 72 S620 48, 704 114 S834 154, 906 88" fill="none" stroke="url(#glow)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M56 158 C124 108, 188 90, 252 104 S384 156, 454 74 S622 50, 706 116 S836 156, 908 90" fill="none" stroke="#ff7a18" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="120" cy="118" r="10" fill="#67d1ff" fill-opacity="0.45"/>
+  <circle cx="716" cy="102" r="10" fill="#67d1ff" fill-opacity="0.35"/>
+  <text x="56" y="104" fill="#f4f7fb" font-size="62" font-family="monospace" font-weight="700">CRIMSON FOUNDRY</text>
+  <text x="58" y="146" fill="#8ea3bf" font-size="24" font-family="monospace">6DOF INFILTRATION PROTOCOL // REACTOR BREACH RUN</text>
+  <text x="58" y="182" fill="#ff7a18" font-size="18" font-family="monospace">F FLARE READY  |  KEYS ACTIVE  |  ESCAPE TIMELINE LOCKED</text>
+</svg>

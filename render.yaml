@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: descent-web
+    runtime: docker
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /healthz
+    disk:
+      name: descent-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: DB_FILE
+        value: /data/descent.db
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: SESSION_SECRET
+        sync: false

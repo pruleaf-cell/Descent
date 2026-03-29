@@ -1,0 +1,75 @@
+{
+  "id": "crimson-foundry",
+  "title": "Crimson Foundry",
+  "description": "A sealed mining complex that powers its own defense lattice. Infiltrate, overload the core, and outrun the collapse.",
+  "palette": {
+    "background": "#04070f",
+    "accent": "#ff7a18",
+    "warning": "#ff3b30"
+  },
+  "sectors": [
+    { "id": "entry-bay", "label": "Entry Bay", "center": { "x": 0, "y": 0, "z": 0 }, "size": { "x": 18, "y": 8, "z": 18 }, "kind": "entry" },
+    { "id": "hub-core", "label": "Hub Core", "center": { "x": 0, "y": 0, "z": -24 }, "size": { "x": 24, "y": 10, "z": 24 }, "kind": "hub" },
+    { "id": "azure-wing", "label": "Azure Wing", "center": { "x": -26, "y": 0, "z": -24 }, "size": { "x": 20, "y": 10, "z": 16 }, "kind": "arena" },
+    { "id": "crimson-wing", "label": "Crimson Wing", "center": { "x": 28, "y": 0, "z": -26 }, "size": { "x": 20, "y": 10, "z": 18 }, "kind": "arena" },
+    { "id": "reactor-shaft", "label": "Reactor Shaft", "center": { "x": 0, "y": 0, "z": -56 }, "size": { "x": 18, "y": 12, "z": 20 }, "kind": "reactor" },
+    { "id": "escape-vent", "label": "Escape Vent", "center": { "x": 0, "y": 8, "z": -10 }, "size": { "x": 12, "y": 8, "z": 20 }, "kind": "escape" },
+    { "id": "secret-cache", "label": "Secret Cache", "center": { "x": -10, "y": 10, "z": -38 }, "size": { "x": 10, "y": 6, "z": 10 }, "kind": "secret" }
+  ],
+  "doors": [
+    { "id": "door-entry-hub", "fromSectorId": "entry-bay", "toSectorId": "hub-core", "position": { "x": 0, "y": 0, "z": -12 }, "size": { "x": 5, "y": 6, "z": 1 } },
+    { "id": "door-hub-azure", "fromSectorId": "hub-core", "toSectorId": "azure-wing", "position": { "x": -12, "y": 0, "z": -24 }, "size": { "x": 1, "y": 6, "z": 5 }, "keyColor": "azure" },
+    { "id": "door-hub-crimson", "fromSectorId": "hub-core", "toSectorId": "crimson-wing", "position": { "x": 12, "y": 0, "z": -24 }, "size": { "x": 1, "y": 6, "z": 5 }, "keyColor": "crimson" },
+    { "id": "door-azure-secret", "fromSectorId": "azure-wing", "toSectorId": "secret-cache", "position": { "x": -18, "y": 10, "z": -34 }, "size": { "x": 1, "y": 4, "z": 4 }, "opensOnSwitchId": "secret-release" },
+    { "id": "door-reactor", "fromSectorId": "hub-core", "toSectorId": "reactor-shaft", "position": { "x": 0, "y": 0, "z": -40 }, "size": { "x": 5, "y": 6, "z": 1 }, "opensOnSwitchId": "reactor-arm" },
+    { "id": "door-escape", "fromSectorId": "hub-core", "toSectorId": "escape-vent", "position": { "x": 0, "y": 4, "z": -8 }, "size": { "x": 4, "y": 4, "z": 1 }, "opensOnSwitchId": "escape-release" }
+  ],
+  "switches": [
+    { "id": "reactor-arm", "sectorId": "reactor-shaft", "position": { "x": 0, "y": 0, "z": -60 }, "armsReactor": true },
+    { "id": "escape-release", "sectorId": "reactor-shaft", "position": { "x": 0, "y": 2, "z": -50 }, "targetDoorId": "door-escape" },
+    { "id": "secret-release", "sectorId": "azure-wing", "position": { "x": -24, "y": 8, "z": -34 }, "targetDoorId": "door-azure-secret" }
+  ],
+  "checkpoints": [
+    { "id": "cp-entry", "sectorId": "entry-bay", "position": { "x": 0, "y": 0, "z": 4 }, "heading": { "pitch": 0, "yaw": 3.14159, "roll": 0 } },
+    { "id": "cp-hub", "sectorId": "hub-core", "position": { "x": 0, "y": 0, "z": -20 }, "heading": { "pitch": 0, "yaw": 3.14159, "roll": 0 } },
+    { "id": "cp-reactor", "sectorId": "reactor-shaft", "position": { "x": 0, "y": 0, "z": -48 }, "heading": { "pitch": 0, "yaw": 3.14159, "roll": 0 } }
+  ],
+  "pickups": [
+    { "id": "flare-start", "type": "flare", "position": { "x": -4, "y": 0, "z": -4 }, "amount": 6 },
+    { "id": "azure-key", "type": "key", "position": { "x": -26, "y": 0, "z": -20 }, "keyColor": "azure" },
+    { "id": "crimson-key", "type": "key", "position": { "x": 28, "y": 0, "z": -22 }, "keyColor": "crimson" },
+    { "id": "energy-cache", "type": "energy", "position": { "x": 4, "y": 0, "z": -22 }, "amount": 40 },
+    { "id": "missile-pack", "type": "ammo-missile", "position": { "x": 0, "y": 0, "z": -58 }, "amount": 4 },
+    { "id": "nova-weapon", "type": "weapon", "position": { "x": -10, "y": 10, "z": -38 }, "weaponId": "nova" },
+    { "id": "invuln-secret", "type": "powerup", "position": { "x": -12, "y": 10, "z": -38 }, "powerupId": "phase-shield" }
+  ],
+  "encounters": [
+    { "id": "entry-drone", "sectorId": "entry-bay", "enemyType": "patrol-drone", "position": { "x": 0, "y": 0, "z": -4 }, "patrolRadius": 6, "trigger": "on-enter", "healthMultiplier": 1 },
+    { "id": "hub-sentry", "sectorId": "hub-core", "enemyType": "sentry-turret", "position": { "x": 6, "y": 2, "z": -26 }, "patrolRadius": 3, "trigger": "on-enter", "healthMultiplier": 1.1 },
+    { "id": "azure-hunter", "sectorId": "azure-wing", "enemyType": "hunter", "position": { "x": -28, "y": 0, "z": -24 }, "patrolRadius": 8, "trigger": "on-enter", "healthMultiplier": 1.15 },
+    { "id": "crimson-guard", "sectorId": "crimson-wing", "enemyType": "heavy-guard", "position": { "x": 30, "y": 0, "z": -28 }, "patrolRadius": 7, "trigger": "on-enter", "healthMultiplier": 1.3 },
+    { "id": "reactor-elite", "sectorId": "reactor-shaft", "enemyType": "reactor-elite", "position": { "x": 0, "y": 0, "z": -62 }, "patrolRadius": 6, "trigger": "on-reactor", "healthMultiplier": 1.4 }
+  ],
+  "objectives": [
+    { "id": "reach-hub", "label": "Reach the foundry hub", "kind": "reach-sector", "sectorId": "hub-core" },
+    { "id": "collect-azure", "label": "Retrieve the azure key", "kind": "collect-key", "keyColor": "azure" },
+    { "id": "collect-crimson", "label": "Retrieve the crimson key", "kind": "collect-key", "keyColor": "crimson" },
+    { "id": "arm-reactor", "label": "Arm the reactor overload", "kind": "arm-reactor", "sectorId": "reactor-shaft" },
+    { "id": "destroy-reactor", "label": "Destroy the reactor", "kind": "destroy-reactor", "sectorId": "reactor-shaft" },
+    { "id": "escape", "label": "Escape before detonation", "kind": "escape", "sectorId": "entry-bay" }
+  ],
+  "startCheckpointId": "cp-entry",
+  "reactor": {
+    "sectorId": "reactor-shaft",
+    "position": { "x": 0, "y": 0, "z": -66 },
+    "hitPoints": 900,
+    "countdownSeconds": 75
+  },
+  "exit": {
+    "sectorId": "entry-bay",
+    "position": { "x": 0, "y": 0, "z": 10 }
+  },
+  "secrets": [
+    { "id": "cache-1", "sectorId": "secret-cache", "rewardLabel": "Nova cache" }
+  ]
+}

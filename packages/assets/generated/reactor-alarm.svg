@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="alarmBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0606"/>
+      <stop offset="100%" stop-color="#2a0c0c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" rx="24" fill="url(#alarmBg)"/>
+  <circle cx="130" cy="100" r="54" fill="#ff3b30" fill-opacity="0.22"/>
+  <path d="M130 48v104M78 100h104" stroke="#ff3b30" stroke-width="12" stroke-linecap="round"/>
+  <text x="226" y="90" fill="#f4f7fb" font-size="44" font-family="monospace">REACTOR ALARM</text>
+  <text x="226" y="132" fill="#ff7a18" font-size="22" font-family="monospace">BREACH IMMINENT // EVACUATE THE MINE</text>
+</svg>
