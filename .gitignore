@@ -10,4 +10,5 @@ test-results
 .env
 .env.local
 apps/api/data
+apps/api/apps/api/data
 packages/assets/generated/*.json
